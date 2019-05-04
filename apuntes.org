@@ -1,0 +1,206 @@
+* EMACS
+** TIPS
+*** MODOS
+**** DIRED
+Gestor de archivos
+**** IBUFFER
+Con d eliges los buffers que quieres matar y con x los ejecutas 
+**** OCCUR
+con occur meter una palabra y te aparecen todas las ocurrencias en otro buffer
+**** IELM
+Puedes probar las expresiones de elisp
+*** SECCIONES
+**** MOVERSE
+- C-c C-n Siguiente sección.
+- C-c C-p Sección anterior.
+- C-c C-f Siguiente sección del mismo nivel.
+- C-c C-b Sección anterior del mismo nivel.
+- C-c C-u Ir subiendo a secciones superiores.
+**** INSERTAR/MODIFICAR
+- M-<RET> Insertar una nueva sección, del mismo nivel que el actual. Si el cursor está a mitad del párrafo, divide el párrafo en dos secciones.
+- M-S-<RET> Inserta un elemento TODO en el mismo nivel.
+- <TAB> En una sección vacía, ciclar sobre los niveles.
+- M-<left>/<right> Incrementar/decrementar un nivel.
+- M-S-<left>/<right> Incrementar/decrementar un nivel el sub-árbol actual.
+- M-S-<up>/<down> Mover el sub-árbol arriba o abajo.
+- C-c C-w Mover la sección o región a otro lugar.
+- C-x n s/w Reducir/ampliar el bufer al sub-árbol actual.
+*** LISTAS
+- No ordenadas: -, + o *.
+- Ordenadas: 1. o 1)
+- Descripción: Usa :: para separar el término de la descripción.
+- <TAB> Ocultar los elementos.
+- M-<RET> Insertar nuevo elemento al mismo nivel.
+- M-S-<RET> Insertar elemento con checkbox.
+- M-S-<up>/<down> Mover elementos arriba/abajo, incluyendo sub elementos.
+- M-<left>/M-<right> Incrementar/decrementar nivel.
+- M-S-<left>/<right> Incrementar/decrementar nivel incluyendo sub elementos.
+- C-c C-c Si hay un checkbox, cambiar el estado.
+- C-c - Ciclar sobre los distintos tipos de listas.
+*** ENLACES
+Sintáxis: "["[enlace][descripcion]"]" o solo "["[enlace]"]", una vez creado, se puede editar con C-c C-l.
+
+Si no hay una URL, el enlace se considera interno al documento:
+
+"["[#custom-id]"]"
+"["[My Target][Find my target]"]"
+El último ejemplo, busca en el documento actual <<My Target>> y enlaza a él.
+
+Tambien se puede poner lo mismo para los imagenes o cualquier archivo del ordenador
+con la ruta del archivo
+
+- C-c l Almacena un enlace a la posición actual.
+- C-c C-l Inserta el enlace, pregunta por la url y descipción, si se llama con el prefijo C-u, se usa autocompletado.
+- C-c C-l Con el cursor en un enlace, lo edita.
+- C-c C-o o mouse-1 o mouse-2 abre el enlace.
+*** ITEMS
+Toda sección comenzando con TODO es un elemento TODO (lista de tareas).
+
+- C-c C-t Cicla entre los distintos estados (unmarked) -> TODO -> DONE -> (unmarked).
+- S-<right>/<left> Igual que arriba, pero solo para el elemento actual.
+- C-c / t Ver la lista como un árbol disperso.
+- C-c a t Muestra la lista de tareas global.
+- S-M-<RET> Inserta una nueva tarea.
+- C-c , Establecer prioridad de la tarea (Entre A,B,C).
+- S-<up>/<dwn> Ciclar entre prioridades.
+*** CHECKBOXES
+Se pueden crear listas de tareas compuestas de varios elementos,
+y con C-c C-c se marcan como completadas,
+para crear una tarea nueva M-S-<RET>.
+**** TODO Organize party [1/2]
+  - [-] call people [1/2]
+    - [ ] Peter
+    - [X] Sarah
+  - [X] order food
+*** MARCAS
+*negrita* => negrita.
+/Cursiva/ => Cursiva.
+=code= y ~verbatim~ -> code, verbatim.
++ tachar + (sin espacios) -> tachar.
+_subrayar_
+*** MACROS
+- `C-x (’ or <f3>– start defining a keyboard macro
+- `C-x )’ or <f4>– stop defining the keyboard macro
+- ‘C-x e’ or <f4> – execute the keyboard macro
+- ‘C-u 37 C-x e’ 37 - seria la cantidad de veces que se ejecutaria
+-M-37 F4 o M-37 C-x e - Esto nos haria los mismo que lo de arriba
+** ELISP
+** PAGINAS
+[[http://www.blackhats.es][blackharts]]
+[[https://lapipaplena.wordpress.com/][la pipa plena curso elisp y emacs]]
+[[https://notxor.nueva-actitud.org/][Notxor Articulos interesantes]]
+[[https://orgmode.org/worg/org-tutorials/org-spreadsheet-lisp-formulas.html][explica como hacer las sumas del modo lisp para las tablas]](+ 5 3)
+* FOL
+** NOMINAS
+*** TODO EJERCICIO 1
+
+Confeccione la nómina del mes de abril de 2019, de un trabajador que lleva ->
+- en la empresa desde 2002:
+  - Salario base = 1600€
+  - Antiguedad = 20€ por trienio
+  - Plus de peligrosidad = 80€
+  - Horas extra fuerza mayor = 70€
+  - Horas extra normales = 20€
+  - Plus de convenio = 90€
+  - Cobra 2 pagas extra de salario base mas antiguedad
+
+
+
+|------------------------------------------+------------------+--------|
+| <c40>                                    |                  |        |
+| empresa                                  | TRABAJADOR       |        |
+| DOMICILIO                                | NIF              | Nº S.S |
+| CIF                                      | CATEGORIA        |        |
+| CCC                                      | GRUPO COTIZACION |        |
+|------------------------------------------+------------------+--------|
+
+|------------------------------------------+---+---+---------|
+| Periodo liquidación                      |   |   | Nº dias |
+| I.DEVENGOS                               |   |   | TOTALES |
+| <40>                                     |   |   |         |
+| 1. Percepciones salariales               |   |   |         |
+| salario base                             |   |   |    1600 |
+|------------------------------------------+---+---+---------|
+| Complementos salariales:                 |   |   |         |
+| Antigüedad                               |   |   |      90 |
+| Peligrosidad                             |   |   |      80 |
+| Convenio                                 |   |   |      90 |
+|------------------------------------------+---+---+---------|
+| Horas extraordinarias                    |   |   |      90 |
+| 2. Percepciones no salariales            |   |   |         |
+|                                          |   |   |         |
+| A. TOTAL DEVENGADO                       |   |   |    1950 |
+|------------------------------------------+---+---+---------|
+|------------------------------------------+---+---+---------|
+| II. DEDUCCIONES                          |   |   |         |
+|------------------------------------------+---+---+---------|
+| 1. Aportaciones del trabajador a las cotizaciones a la S.S y recaudación conjunta |   |   |         |
+|                                          |   |   |         |
+| Contingencias comunes                    |   |   |         |
+| Desempleo                                |   |   |         |
+| Formación Profesional                    |   |   |         |
+| Horas extraordinarias Normales           |   |   |         |
+| Horas extraordinarias de Fuerza Mayor    |   |   |         |
+| TOTAL APORTACIONES                       |   |   |         |
+|------------------------------------------+---+---+---------|
+|                                          |   |   |         |
+| 2. IRPF                                  |   |   |         |
+|                                          |   |   |         |
+| B. TOTAL A DEDUCIR                       |   |   |         |
+| LIQUIDO TOTAL A PERCIBIR(A-B)            |   |   |         |
+|------------------------------------------+---+---+---------|
+|                                          |   |   |         |
+|                                          |   |   |         |
+|                                          |   |   |         |
+|                                          |   |   |         |
+|------------------------------------------+---+---+---------|
+| DETERMINACION DE LAS BASES DE COTIZACION A LA SEGURIDAD SOCIAL E IRPF |   |   |         |
+| 1. Base de cotización por contingencias comunes |   |   |         |
+| Remuneración mensual                     |   |   |         |
+| Prorrata pagas extras                    |   |   |         |
+| TOTAL                                    |   |   |         |
+| 2. Base de cotización por contingencias profesionales y recaudación conjunta |   |   |         |
+| 3. Aportación de le empresa:             |   |   |         |
+| Por contingencias comunes                |   |   |         |
+| Desempleo                                |   |   |         |
+| Fogasa                                   |   |   |         |
+| Formación profesional                    |   |   |         |
+|                                          |   |   |         |
+| 4. Base de contización por horas extras normales |   |   |         |
+| 5. Base de cotización por horas extras fuerza mayor |   |   |         |
+| 6. Base sujeta a retención del IRPF      |   |   |         |
+|------------------------------------------+---+---+---------|
+ #+TBLFM: @13$4='(+ @5$4..@11$4);N::
+
+vsum(@5$4..@11$4);%.2f€
+*prueba* _prueba_ /cursiva/ 
+prueba
+*** TODO EJERCICIO 2
+Confecciones la nómina del mes de abril de 2019, de un trabajador un contrato ->
+- temporal pertenece al grupo 1 de contización:
+  - Residencia: Donostia y 2 hijos.
+  - Salario base = 2500€
+  - Antiguedad = 100€
+  - Plus de resposabilidad = 90€
+  - Plus de ropa de trabajo = 60€
+  - Las horas extra normales = 70€
+  - Las pagas extra de salario base las cobra prorrateadas.
+*** TODO EJERCICIO 3 
+Confeccionar la nómina de mayo de 2019, grupo de cotización 1, ->
+- contrato de interinidad, en la empresa desde el año 2000.
+  - 1 hijo.
+  - Salario base = 2800€
+  - Antigüedad = 2% del salario base por trienio.
+  - Plus quebranto de moneda = 60€
+  - Hora extras estructurales = 40€
+  - Plus de nocturnidad = 50€
+  - Cobra 2 pagas extras de salario base mas antigüedad.
+** FINIQUITOS
+*** TODO 
+*** TODO 
+*** TODO 
+*** TODO 
+*** TODO 
+*** TODO 
+*** TODO 
+*** TODO 
