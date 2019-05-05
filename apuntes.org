@@ -63,6 +63,17 @@ Toda sección comenzando con TODO es un elemento TODO (lista de tareas).
 - S-M-<RET> Inserta una nueva tarea.
 - C-c , Establecer prioridad de la tarea (Entre A,B,C).
 - S-<up>/<dwn> Ciclar entre prioridades.
+*** TABLAS
+**** TIPO HOJAS DE CALCULO
+- $1+$2;%.2f : suma los dos primeros campos usando 2 decimales
+- $0;%.1f : reformatea la celda actual a un decimal
+- vmean($2..$7) : computa un rango de columnas, usando un vector de funciones
+- vmean($2..$7);EN : igual, pero usa los campos vacios como 0
+- C-c } : Muestra las coordenadas del grid de la tabla.
+- C-c C-c ó C-x C-s : Sale del editor de formulas
+- C-c ‘ : Edita todas las formulas de la tabla actual en un buffer especial.
+- C-c ? : Resalta el campo referenciado por la posicion del cursor en una formula.
+[[https://www.blackhats.es/wordpress/?p=84][mas ejemplos]]
 *** CHECKBOXES
 Se pueden crear listas de tareas compuestas de varios elementos,
 y con C-c C-c se marcan como completadas,
@@ -92,7 +103,7 @@ _subrayar_
 [[https://orgmode.org/worg/org-tutorials/org-spreadsheet-lisp-formulas.html][explica como hacer las sumas del modo lisp para las tablas]](+ 5 3)
 * FOL
 ** NOMINAS
-*** TODO EJERCICIO 1
+*** DONE EJERCICIO 1
 
 Confeccione la nómina del mes de abril de 2019, de un trabajador que lleva ->
 - en la empresa desde 2002:
@@ -114,64 +125,64 @@ Confeccione la nómina del mes de abril de 2019, de un trabajador que lleva ->
 | CCC                                      | GRUPO COTIZACION |        |
 |------------------------------------------+------------------+--------|
 
-|------------------------------------------+--------------------+------------+---------------------|
-| Periodo liquidación                      |                    |            |             Nº dias |
-| I.DEVENGOS                               |                    |            |             TOTALES |
-| <40>                                     |                    |            |                     |
-| 1. Percepciones salariales               |                    |            |                     |
-| salario base                             |                    |            |                1600 |
-|------------------------------------------+--------------------+------------+---------------------|
-| Complementos salariales:                 |                    |            |                     |
-| Antigüedad                               |                    |            |                 100 |
-| Peligrosidad                             |                    |            |                  80 |
-| Convenio                                 |                    |            |                  90 |
-|------------------------------------------+--------------------+------------+---------------------|
-| Horas extraordinarias                    |                    |            |                  90 |
-| 2. Percepciones no salariales            |                    |            |                     |
-|                                          |                    |            |                     |
-| A. TOTAL DEVENGADO                       |                    |            |                1960 |
-|------------------------------------------+--------------------+------------+---------------------|
-|------------------------------------------+--------------------+------------+---------------------|
-| II. DEDUCCIONES                          |                    |            |                     |
-|------------------------------------------+--------------------+------------+---------------------|
-| 1. Aportaciones del trabajador a las cotizaciones a la S.S y recaudación conjunta |                    | porcentaje |                     |
-|                                          |                    |            |                     |
-| Contingencias comunes                    | 2153.3333333333335 |        4.7 |  101.20666666666668 |
-| Desempleo                                | 2243.3333333333335 |       1.55 |   5.786666666666666 |
-| Formación Profesional                    | 2243.3333333333335 |        0.1 |  0.3733333333333333 |
-| Horas extraordinarias Normales           |                 20 |        4.7 |                0.94 |
-| Horas extraordinarias de Fuerza Mayor    |                 70 |          2 |  1.4000000000000001 |
-| TOTAL APORTACIONES                       |                    |            |                     |
-|------------------------------------------+--------------------+------------+---------------------|
-|                                          |                    |            |                     |
-| 2. IRPF                                  |               1960 |         15 |               294.0 |
-|                                          |                    |            |                     |
-| B. TOTAL A DEDUCIR                       |                    |            |   403.7066666666667 |
-| LIQUIDO TOTAL A PERCIBIR(A-B)            |                    |            |  1556.2933333333333 |
-|------------------------------------------+--------------------+------------+---------------------|
-|                                          |                    |            |                     |
-|                                          |                    |            |                     |
-|                                          |                    |            |                     |
-|                                          |                    |            |                     |
-|------------------------------------------+--------------------+------------+---------------------|
-| DETERMINACION DE LAS BASES DE COTIZACION A LA SEGURIDAD SOCIAL E IRPF |                    |            |                     |
-| 1. Base de cotización por contingencias comunes |                    |            |                     |
-| Remuneración mensual                     |                    |            | 0.33332999999998947 |
-| Prorrata pagas extras                    |                    |            |                 283 |
-| TOTAL                                    |                    |            |           2153.3333 |
-| 2. Base de cotización por contingencias profesionales y recaudación conjunta |                    |            |           5.7866667 |
-| 3. Aportación de le empresa:             |                    | porcentaje |                     |
-| Por contingencias comunes                |          5.7866667 |       23.6 |        1.3656533412 |
-| Desempleo                                |          5.7866667 |        5.5 | 0.31826666849999996 |
-| Fogasa                                   |          5.7866667 |        0.2 |        0.0115733334 |
-| Formación profesional                    |          5.7866667 |        0.6 |        0.0347200002 |
-|                                          |                    |            |                 0.0 |
-| 4. Base de contización por horas extras normales |                 20 |       23.6 |   4.720000000000001 |
-| 5. Base de cotización por horas extras fuerza mayor |                 70 |         12 |                 8.4 |
-| 6. Base sujeta a retención del IRPF      |                    |            |                     |
-|------------------------------------------+--------------------+------------+---------------------|
-#+TBLFM: @13$4='(+ @5$4..@11$4);N::@17$2='(- (+ @13$4 (/ (* (+ @5$4 @7$4) 2) 12.0)) @10$4);N::@17$4..@21$4='(* $2 (/ $3 100.0));N::@18$2='(+ @17$2 @10$4);N::@19$2='(+ @17$2 @10$4);N::@24$2=@13$4::@26$4='(+ @-10$4..@-1$4);N::@27$4='(- @13$4 @26$4);N::@34$4='(- @36$4 @35$4);N::@35$4='(/ (* (+ @5$4 @7$4) 2) 12);N::@36$4=@17$2::@37$4=@18$4::@39$2..@42$2=@18$4::@39$4..@45$4='(* $2 (/ $3 100.0));N
-
+|------------------------------------------+--------------------+------------+--------------------|
+| Periodo liquidación                      |                    |            |            Nº dias |
+| I.DEVENGOS                               |                    |            |            TOTALES |
+| <40>                                     |                    |            |                    |
+| 1. Percepciones salariales               |                    |            |                    |
+| salario base                             |                    |            |               1600 |
+|------------------------------------------+--------------------+------------+--------------------|
+| Complementos salariales:                 |                    |            |                    |
+| Antigüedad                               |                    |            |                100 |
+| Peligrosidad                             |                    |            |                 80 |
+| Convenio                                 |                    |            |                 90 |
+|------------------------------------------+--------------------+------------+--------------------|
+| Horas extraordinarias                    |                    |            |                 90 |
+| 2. Percepciones no salariales            |                    |            |                    |
+|                                          |                    |            |                    |
+| A. TOTAL DEVENGADO                       |                    |            |               1960 |
+|------------------------------------------+--------------------+------------+--------------------|
+|------------------------------------------+--------------------+------------+--------------------|
+| II. DEDUCCIONES                          |                    |            |                    |
+|------------------------------------------+--------------------+------------+--------------------|
+| 1. Aportaciones del trabajador a las cotizaciones a la S.S y recaudación conjunta |                    | porcentaje |                    |
+|                                          |                    |            |                    |
+| Contingencias comunes                    | 2153.3333333333335 |        4.7 | 101.20666666666668 |
+| Desempleo                                | 2243.3333333333335 |       1.55 |  34.77166666666667 |
+| Formación Profesional                    | 2243.3333333333335 |        0.1 | 2.2433333333333336 |
+| Horas extraordinarias Normales           |                 20 |        4.7 |               0.94 |
+| Horas extraordinarias de Fuerza Mayor    |                 70 |          2 | 1.4000000000000001 |
+| TOTAL APORTACIONES                       |                    |            |                    |
+|------------------------------------------+--------------------+------------+--------------------|
+|                                          |                    |            |                    |
+| 2. IRPF                                  |               1960 |         15 |              294.0 |
+|                                          |                    |            |                    |
+| B. TOTAL A DEDUCIR                       |                    |            |  434.5616666666667 |
+| LIQUIDO TOTAL A PERCIBIR(A-B)            |                    |            | 1525.4383333333333 |
+|------------------------------------------+--------------------+------------+--------------------|
+|                                          |                    |            |                    |
+|                                          |                    |            |                    |
+|                                          |                    |            |                    |
+|                                          |                    |            |                    |
+|------------------------------------------+--------------------+------------+--------------------|
+| DETERMINACION DE LAS BASES DE COTIZACION A LA SEGURIDAD SOCIAL E IRPF |                    |            |                    |
+| 1. Base de cotización por contingencias comunes |                    |            |                    |
+| Remuneración mensual                     |                    |            | 1870.3332999999998 |
+| Prorrata pagas extras                    |                    |            |                283 |
+| TOTAL                                    |                    |            |          2153.3333 |
+| 2. Base de cotización por contingencias profesionales y recaudación conjunta |                    |            |          34.771667 |
+| 3. Aportación de le empresa:             |                    | porcentaje |                    |
+| Por contingencias comunes                |           2153.33€ |       23.6 |        508.1866588 |
+| Desempleo                                |          2243.3333 |        5.5 | 123.38333149999998 |
+| Fogasa                                   |          2243.3333 |        0.2 | 4.4866665999999995 |
+| Formación profesional                    |          2243.3333 |        0.6 | 13.459999799999999 |
+|                                          |                    |            |                0.0 |
+| 4. Base de contización por horas extras normales |                 20 |       23.6 |  4.720000000000001 |
+| 5. Base de cotización por horas extras fuerza mayor |                 70 |         12 |                8.4 |
+| 6. Base sujeta a retención del IRPF      |                    |            |                    |
+|------------------------------------------+--------------------+------------+--------------------|
+#+TBLFM: @13$4='(+ @5$4..@11$4);N::@17$2='(- (+ @13$4 (/ (* (+ @5$4 @7$4) 2) 12.0)) @10$4);N::@17$4..@21$4='(* $2 (/ $3 100.0));N::@18$2='(+ @17$2 @10$4);N::@19$2='(+ @17$2 @10$4);N::@24$2=@13$4::@26$4='(+ @-10$4..@-1$4);N::@27$4='(- @13$4 @26$4);N::@34$4='(- @36$4 @35$4);N::@35$4='(/ (* (+ @5$4 @7$4) 2) 12);N::@36$4=@17$2::@37$4=@18$4::@39$2=@17$2::@39$4..@45$4='(* $2 (/ $3 100.0));N::@40$2..@42$2=@18$2
+#+TBLFM: @39$2 = @39$2;%.2f€ 
 vsum(@5$4..@11$4);%.2f€
 # Field and Range Formulas
 @13$4 = '(+ @5$4..@11$4);N
