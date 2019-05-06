@@ -320,3 +320,4 @@ Confeccionar la nómina de mayo de 2019, grupo de cotización 1, ->
 
 | ciudades |
 |          |
+* LENGUAJES DE MARCAS
