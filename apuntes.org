@@ -321,3 +321,14 @@ Confeccionar la nómina de mayo de 2019, grupo de cotización 1, ->
 | ciudades |
 |          |
 * LENGUAJES DE MARCAS
+** HTML
+** CSS
+** JAVASCRIPT
+** XML
+*** XSL
+<xsl:template match="/"> : Parte del documento a la que se aplica la plantilla.
+<xsl:value-of select=""> : Obtener el valor de un elemento.
+<xsl:for-each select=""> : Leer todos los elementos que coincidan con select.
+<xsl:sort select=""> : Ordenar alfabéticamente todos los elementos que coincidan con select.
+<xsl:if test=""> : Tomar elemento que cumpla la condición test.
+<xsl:choose> : Condicional que actúa según varias condiciones test.
