@@ -1,0 +1,27 @@
+* Introducción a la programación en el lenguaje Java.
+Algunos aspectos a resaltar en este tema:
+ - Convenciones de Java:  el nombre de la clase debe llevar la primera letra   en mayúscula, camelCase para unir palabras (ej: misAlumnos), nombre de los métodos y las variables en minúscula y las constantes, en mayúscula.
+ - Tipos de datos simples o básicos: empiezan por minúscula.
+** DATOS SIMPLES O BÁSICOS EN JAVA
+_Para datos enteros_: *byte*, *short*, *int*, *long*. Cada uno tiene un rango que va acorde a los bits que ocupa (por ejemplo byte abarca de -128 a +127 y ocupa 8 bits).
+_Para un carácter_, ya sea un número o letra: *char*
+_Para decimales_: *float*, *double* (double es más preciso, pero también ocupa más: float 4bytes y double 8bytes). 
+_Para valores de true o false_ : *boolean*
+** DECLARACIÓN E INICIALIZACIÓN (dar valor) DE VARIABLES
+- Las variables hay que declararlas en minúscula y las constantes en mayúsculas.
+- El ordenador, por defecto, entiende que un número decimal es double, por eso si queremos declarar un float a=3,4 por ejemplo, para que no nos de error debemos poner float a=3,4F (o f)
+- *char* se inicializa (cuando se le da valor) ='a' (no con comillas dobles)
+** CONVERSIONES ENTRE TIPOS DE DATOS (CAST)
+Existen conversiones implícitas (las realiza el ordenador automáticamente) y explícitas (tiene que forzarlas el programador)
+Ejemplo de un CAST: 
+#+BEGIN_SRC java
+  float f;
+  int a = 3;
+  f = a; // conversion implícita
+  a = (int)f: // estoy forzando a que f se convierta en int
+#+END_SRC
+_No podemos hacer conversiones entre datos enteros o reales y booleanos._
+*** CONVERSIONES IMPLÍCITAS:
+Siempre que hagamos de menor rango a mayor rango. 
+Por ejemplo, al asignar *una variable tipo char ==> a una variable tipo int*, automáticamente el programa convierte la variable char en int. En este caso, si a la variable char que tenemos le damos el valor de una letra, Java hace la conversión de esa letra a número (teniendo en cuenta la Tabla de Caracteres Unicode).
+
