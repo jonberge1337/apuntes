@@ -245,8 +245,8 @@ Confeccionar la nómina de mayo de 2019, grupo de cotización 1, ->
 |                                          |           |            |           |
 | 2. IRPF                                  |     3286. |        19% |    624.34 |
 |                                          |           |            |           |
-| B. TOTAL A DEDUCIR                       |           |            | 8.6619033 |
-| LIQUIDO TOTAL A PERCIBIR(A-B)            |           |            | 3277.3381 |
+| B. TOTAL A DEDUCIR                       |           |            | 866.19033 |
+| LIQUIDO TOTAL A PERCIBIR(A-B)            |           |            | 2419.8097 |
 |------------------------------------------+-----------+------------+-----------|
 |                                          |           |            |           |
 |                                          |           |            |           |
@@ -296,6 +296,12 @@ Confeccionar la nómina de mayo de 2019, grupo de cotización 1, ->
 ** FINIQUITOS
 *** TODO 
 *** TODO 
+2.Una trabajadora finaliza su contrato de circunstancias de la producción el 4 de
+mayo de 2017 después de 6 meses . Sabemos que no ha disfrutado ni un solo día de
+vacaciones este año y que recibía una mensualidad ordinaria de 1473 euros y 2 pagas
+extra de 1385 en verano y de la misma cuantía en Navidad. Calcular el finiquito que le corresponderá.
+
+
 *** TODO 
 *** TODO 
 *** TODO 
